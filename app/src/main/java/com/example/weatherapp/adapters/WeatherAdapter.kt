@@ -19,10 +19,10 @@ class WeatherAdapter() : ListAdapter<WeatherModel, WeatherAdapter.Holder>(Compar
 
 
         fun bind(item: WeatherModel) = with(binding){
-            val CurrentTemp = "${item.currentTemp}°C"
+    
             tvData.text = item.time
             tvCondition.text = item.condition
-            tvTemp.text = CurrentTemp.ifEmpty {
+            tvTemp.text = item.currentTemp.ifEmpty {
                 "${item.maxTemp}°C/${item.minTemp}°C"
             }
             Picasso.get().load("https:"+ item.imageUrl).into(im)
